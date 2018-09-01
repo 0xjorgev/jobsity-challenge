@@ -11,10 +11,32 @@ import UIKit
 class HomeTableViewController: UITableViewController {
     
     var items:[Show]?
+    
+    let cellIdentifier = "ShowTableViewCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        items = [Show]()
+        
+        self.tableView.register(ShowTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        
+        Services.shared.retriveShowList(page: 1){
+            (show, error) in
+            self.items = show
+            
+            print("Shows count: \(show?.count)")
+            print("Show: \(show?.first)")
+            
+            OperationQueue.main.addOperation {
+                 self.tableView.reloadData()
+            }
+            
+        }
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationItem.title = NSLocalizedString("Home", comment: "")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -32,6 +54,24 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return items?.count ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ShowTableViewCell
+        
+        cell.showCellData = ShowTableViewCell.ShowCellData(show:items?[indexPath.row])
+            //ShowCellData(show:items?[indexPath.row])
+        
+        return cell
+    }
+    
+//    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 80.0
+//    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120.0
     }
 
     /*

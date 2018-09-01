@@ -22,6 +22,8 @@
 		18B52981213AE60900DC8016 /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52980213AE60900DC8016 /* ShowTableViewCell.swift */; };
 		18B52983213AE65500DC8016 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52982213AE65500DC8016 /* Colors.swift */; };
 		18B52986213AE83500DC8016 /* ShowListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52985213AE83500DC8016 /* ShowListViewModel.swift */; };
+		18B52987213B337300DC8016 /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52980213AE60900DC8016 /* ShowTableViewCell.swift */; };
+		18B52988213B34A000DC8016 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52976213A31C600DC8016 /* Show.swift */; };
 		52DB57FD89302007C16CDE1F /* Pods_CodeChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B15707FB8883145CD21A2A /* Pods_CodeChallenge.framework */; };
 		CFE73AF40BE7DAF2B39E1338 /* Pods_CodeChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9773EC22CC0A041463F752 /* Pods_CodeChallengeTests.framework */; };
 /* End PBXBuildFile section */
@@ -468,7 +470,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B52987213B337300DC8016 /* ShowTableViewCell.swift in Sources */,
 				18B5297C213ADCE300DC8016 /* HomeTableViewController.swift in Sources */,
+				18B52988213B34A000DC8016 /* Show.swift in Sources */,
 				189B3DA6213A1D7C00984D6E /* CodeChallengeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

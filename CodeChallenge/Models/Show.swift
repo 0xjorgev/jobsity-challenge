@@ -13,6 +13,7 @@ struct Show:Decodable {
     let id:Int?
     let url:String?
     let type:String?
+    let name:String?
     let language:String?
     let genres:[String]?
     let status:String?
@@ -34,6 +35,7 @@ struct Show:Decodable {
         case id
         case url
         case type
+        case name
         case language
         case genres
         case status
