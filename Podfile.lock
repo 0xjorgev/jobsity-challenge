@@ -1,16 +1,20 @@
 PODS:
+  - moa (9.0.2)
   - PureLayout (3.0.2)
 
 DEPENDENCIES:
+  - moa (~> 9.0)
   - PureLayout
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - moa
     - PureLayout
 
 SPEC CHECKSUMS:
+  moa: b73dc5e0efa1fad00711c4608e41b197f4d15b12
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
 
-PODFILE CHECKSUM: 3a0952143c3f4c78d2292aa0f242b3255403cdcd
+PODFILE CHECKSUM: ba56b8e8d05afe41b1d5bf7a12b98dcf87bb07df
 
 COCOAPODS: 1.5.3

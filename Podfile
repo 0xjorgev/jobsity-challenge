@@ -8,6 +8,7 @@ target 'CodeChallenge' do
   # Pods for CodeChallenge
 
   pod 'PureLayout'
+  pod 'moa', '~> 9.0'
 
   target 'CodeChallengeTests' do
     inherit! :search_paths

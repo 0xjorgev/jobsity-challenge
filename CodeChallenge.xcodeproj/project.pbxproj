@@ -19,6 +19,9 @@
 		18B52977213A31C600DC8016 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52976213A31C600DC8016 /* Show.swift */; };
 		18B5297B213ADCE300DC8016 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5297A213ADCE300DC8016 /* HomeTableViewController.swift */; };
 		18B5297C213ADCE300DC8016 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5297A213ADCE300DC8016 /* HomeTableViewController.swift */; };
+		18B52981213AE60900DC8016 /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52980213AE60900DC8016 /* ShowTableViewCell.swift */; };
+		18B52983213AE65500DC8016 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52982213AE65500DC8016 /* Colors.swift */; };
+		18B52986213AE83500DC8016 /* ShowListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52985213AE83500DC8016 /* ShowListViewModel.swift */; };
 		52DB57FD89302007C16CDE1F /* Pods_CodeChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B15707FB8883145CD21A2A /* Pods_CodeChallenge.framework */; };
 		CFE73AF40BE7DAF2B39E1338 /* Pods_CodeChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9773EC22CC0A041463F752 /* Pods_CodeChallengeTests.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +60,9 @@
 		18B52973213A2C8400DC8016 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		18B52976213A31C600DC8016 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		18B5297A213ADCE300DC8016 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		18B52980213AE60900DC8016 /* ShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTableViewCell.swift; sourceTree = "<group>"; };
+		18B52982213AE65500DC8016 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		18B52985213AE83500DC8016 /* ShowListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowListViewModel.swift; sourceTree = "<group>"; };
 		5E9773EC22CC0A041463F752 /* Pods_CodeChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		837DDE9C4ECA0164E6239EDA /* Pods-CodeChallengeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeChallengeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CodeChallengeUITests/Pods-CodeChallengeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9CF9EEDE84A660DD8465B86A /* Pods-CodeChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CodeChallengeTests/Pods-CodeChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +127,8 @@
 		189B3D8F213A1D7100984D6E /* CodeChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				18B52984213AE81B00DC8016 /* ViewModels */,
+				18B5297E213AE59500DC8016 /* Views */,
 				18B52979213A415E00DC8016 /* ViewControllers */,
 				18B52978213A3E3700DC8016 /* Utils */,
 				18B52975213A31A800DC8016 /* Models */,
@@ -163,6 +171,7 @@
 			children = (
 				189B3D90213A1D7100984D6E /* AppDelegate.swift */,
 				18B52973213A2C8400DC8016 /* Services.swift */,
+				18B52982213AE65500DC8016 /* Colors.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -183,6 +192,30 @@
 			);
 			name = Home;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		18B5297E213AE59500DC8016 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				18B5297F213AE59D00DC8016 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		18B5297F213AE59D00DC8016 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				18B52980213AE60900DC8016 /* ShowTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		18B52984213AE81B00DC8016 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				18B52985213AE83500DC8016 /* ShowListViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		6E0D78921AD4AAFCBD2DA6E2 /* Frameworks */ = {
@@ -383,10 +416,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CodeChallenge/Pods-CodeChallenge-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/moa/moa.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/moa.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -418,8 +453,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B52981213AE60900DC8016 /* ShowTableViewCell.swift in Sources */,
 				189B3D93213A1D7100984D6E /* ViewController.swift in Sources */,
 				18B52974213A2C8400DC8016 /* Services.swift in Sources */,
+				18B52986213AE83500DC8016 /* ShowListViewModel.swift in Sources */,
+				18B52983213AE65500DC8016 /* Colors.swift in Sources */,
 				18B52977213A31C600DC8016 /* Show.swift in Sources */,
 				189B3D91213A1D7100984D6E /* AppDelegate.swift in Sources */,
 				18B5297B213ADCE300DC8016 /* HomeTableViewController.swift in Sources */,
