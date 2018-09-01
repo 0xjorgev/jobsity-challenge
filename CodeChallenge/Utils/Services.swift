@@ -127,7 +127,7 @@ class Services:NSObject {
         
     }
     
-    func peopleSearch(query:String?, completion: @escaping ([People]?, Error?) -> Void ){
+    func peopleSearch(query:String?, completion: @escaping ([PersonResult]?, Error?) -> Void ){
         
         // set up URLRequest with URL
         let endpoint = "\(BASEURL)search/people?q=\(query ?? "")"
@@ -149,8 +149,8 @@ class Services:NSObject {
             
             let decoder = JSONDecoder()
             do {
-                let people = try decoder.decode([People].self, from: responseData)
-                completion(people, nil)
+                let result = try decoder.decode([PersonResult].self, from: responseData)
+                completion(result, nil)
             } catch {
                 print("error trying to convert data to JSON")
                 print(error)

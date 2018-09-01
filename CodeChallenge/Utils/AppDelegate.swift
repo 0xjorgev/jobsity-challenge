@@ -22,10 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            _ = show.map{ debugPrint($0) }
 //        }
         
-        Services.shared.searchShowByName(query: "girls"){
-            (show, error) in
-            _ = show.map{ debugPrint($0) }
-        }
+//        Services.shared.searchShowByName(query: "girls"){
+//            (show, error) in
+//            _ = show.map{ debugPrint($0) }
+//        }
+        
+        
+//        Services.shared.peopleSearch(query: "lauren"){
+//            (show, error) in
+//            _ = show.map{ debugPrint($0) }
+//        }
         
         
         
