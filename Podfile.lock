@@ -1,20 +1,24 @@
 PODS:
   - moa (9.0.2)
   - PureLayout (3.0.2)
+  - UIScrollView-InfiniteScroll (1.1.0)
 
 DEPENDENCIES:
   - moa (~> 9.0)
   - PureLayout
+  - UIScrollView-InfiniteScroll (~> 1.1.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - moa
     - PureLayout
+    - UIScrollView-InfiniteScroll
 
 SPEC CHECKSUMS:
   moa: b73dc5e0efa1fad00711c4608e41b197f4d15b12
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+  UIScrollView-InfiniteScroll: 3ef456bcbe759c19f510a383cff96e6647c98c98
 
-PODFILE CHECKSUM: ba56b8e8d05afe41b1d5bf7a12b98dcf87bb07df
+PODFILE CHECKSUM: 39a2d6b36e78cfba88ccd7623461fb336d8be437
 
 COCOAPODS: 1.5.3

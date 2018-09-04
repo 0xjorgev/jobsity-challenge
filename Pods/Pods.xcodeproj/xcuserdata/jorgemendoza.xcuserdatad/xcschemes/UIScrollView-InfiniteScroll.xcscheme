@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BC17A149B21AE34C62214DDE9A5B2776"
-               BuildableName = "Pods_CodeChallenge.framework"
-               BlueprintName = "Pods-CodeChallenge"
+               BlueprintIdentifier = "6E60EE9B9C10FCF3BB2178571280E66F"
+               BuildableName = "UIScrollView_InfiniteScroll.framework"
+               BlueprintName = "UIScrollView-InfiniteScroll"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BC17A149B21AE34C62214DDE9A5B2776"
-            BuildableName = "Pods_CodeChallenge.framework"
-            BlueprintName = "Pods-CodeChallenge"
+            BlueprintIdentifier = "6E60EE9B9C10FCF3BB2178571280E66F"
+            BuildableName = "UIScrollView_InfiniteScroll.framework"
+            BlueprintName = "UIScrollView-InfiniteScroll"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

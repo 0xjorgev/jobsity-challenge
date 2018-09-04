@@ -51,6 +51,7 @@
 		18B52986213AE83500DC8016 /* ShowListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52985213AE83500DC8016 /* ShowListViewModel.swift */; };
 		18B52987213B337300DC8016 /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52980213AE60900DC8016 /* ShowTableViewCell.swift */; };
 		18B52988213B34A000DC8016 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52976213A31C600DC8016 /* Show.swift */; };
+		18BA22CD213E295D009C6C65 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA22CC213E295D009C6C65 /* SearchViewController.swift */; };
 		52DB57FD89302007C16CDE1F /* Pods_CodeChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B15707FB8883145CD21A2A /* Pods_CodeChallenge.framework */; };
 		CFE73AF40BE7DAF2B39E1338 /* Pods_CodeChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9773EC22CC0A041463F752 /* Pods_CodeChallengeTests.framework */; };
 /* End PBXBuildFile section */
@@ -103,6 +104,7 @@
 		18B52980213AE60900DC8016 /* ShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTableViewCell.swift; sourceTree = "<group>"; };
 		18B52982213AE65500DC8016 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		18B52985213AE83500DC8016 /* ShowListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowListViewModel.swift; sourceTree = "<group>"; };
+		18BA22CC213E295D009C6C65 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5E9773EC22CC0A041463F752 /* Pods_CodeChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		837DDE9C4ECA0164E6239EDA /* Pods-CodeChallengeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeChallengeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CodeChallengeUITests/Pods-CodeChallengeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9CF9EEDE84A660DD8465B86A /* Pods-CodeChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CodeChallengeTests/Pods-CodeChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 		18B52979213A415E00DC8016 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				18BA22CB213E2948009C6C65 /* Search */,
 				18572C68213E068F00FA10E1 /* Episode Details */,
 				18572C49213C2E7400FA10E1 /* Show Details */,
 				18B5297D213ADCE800DC8016 /* Home */,
@@ -307,6 +310,14 @@
 				18B52985213AE83500DC8016 /* ShowListViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		18BA22CB213E2948009C6C65 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				18BA22CC213E295D009C6C65 /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		6E0D78921AD4AAFCBD2DA6E2 /* Frameworks */ = {
@@ -507,11 +518,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CodeChallenge/Pods-CodeChallenge-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/UIScrollView-InfiniteScroll/UIScrollView_InfiniteScroll.framework",
 				"${BUILT_PRODUCTS_DIR}/moa/moa.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIScrollView_InfiniteScroll.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/moa.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,6 +567,7 @@
 				18B52983213AE65500DC8016 /* Colors.swift in Sources */,
 				18572C59213CD6BC00FA10E1 /* String+Extension.swift in Sources */,
 				18B52977213A31C600DC8016 /* Show.swift in Sources */,
+				18BA22CD213E295D009C6C65 /* SearchViewController.swift in Sources */,
 				18572C5D213CE53B00FA10E1 /* GenresEnum.swift in Sources */,
 				18572C66213D09C500FA10E1 /* ShowEpisodeHeader.swift in Sources */,
 				18572C56213CD24F00FA10E1 /* ShowSummaryTableViewCell.swift in Sources */,

@@ -1,79 +1,64 @@
 //
-//  HomeTableViewController.swift
+//  SearchViewController.swift
 //  CodeChallenge
 //
-//  Created by Jorge Mendoza on 9/1/18.
+//  Created by Jorge Mendoza on 9/3/18.
 //  Copyright © 2018 Jorge Mendoza. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class HomeTableViewController: UITableViewController {
+class SearchViewController:UITableViewController {
     
-    var items:[Show]?{
+    var items:[ShowResult]? {
         didSet{
+            
             OperationQueue.main.addOperation {
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
             }
+            
         }
     }
     
-    var itemsCopy:[Show]?
-    
-    var filteredItems:[Show]?
-    
-    var currentPage:Int = 0
-    
     let cellIdentifier = "ShowTableViewCell"
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        items = [Show]()
         
-        itemsCopy = [Show]()
-        
-        filteredItems = [Show]()
+        items = [ShowResult]()
         
         self.tableView.register(ShowTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         
-        getData()
         
         let searchController = UISearchController(searchResultsController: nil)
+        
+        searchController.searchResultsUpdater = self
+        
+        searchController.obscuresBackgroundDuringPresentation = false
+        
+        searchController.searchBar.placeholder = "Shows Search"
+        
+        searchController.searchBar.delegate = self
         
         refreshControl = UIRefreshControl()
         
         navigationItem.searchController = searchController
         
-        searchController.obscuresBackgroundDuringPresentation = false
-        
-        searchController.searchBar.delegate = self
-        
         navigationItem.hidesSearchBarWhenScrolling = false
         
-        definesPresentationContext = true
+         definesPresentationContext = true
         
-        refreshControl?.addTarget(self, action: #selector(refresData), for: .valueChanged)
     }
     
-    //Move somewhere else
     
-    @objc private func refresData(_ sender: Any) {
-        // Fetch Weather Data
-        getData()
-    }
-    
-    func getData() {
+    func getData(search:String?) {
         
-        Services.shared.retriveShowList(page: currentPage){
-            (show, error) in
+        Services.shared.searchShowByName(query: search){
+            result, error in
             
-            self.items = show
-            
-            self.itemsCopy = show
-            
-            self.currentPage = Int((self.items?.count ?? 0) / 250)
+            self.items = result
         }
     }
     
@@ -82,16 +67,16 @@ class HomeTableViewController: UITableViewController {
         
         addImageTitle(name: "gray-text-logo-smaller")
         
-        customLargeTitle(title:NSLocalizedString("Home", comment: ""))
+        customLargeTitle(title:NSLocalizedString("Search", comment: ""))
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return items?.count ?? 0
@@ -101,8 +86,8 @@ class HomeTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ShowTableViewCell
         
-        cell.showCellData = ShowTableViewCell.ShowCellData(show:items?[indexPath.row])
-            //ShowCellData(show:items?[indexPath.row])
+        cell.showCellData = ShowTableViewCell.ShowCellData(show:items?[indexPath.row].show)
+        //ShowCellData(show:items?[indexPath.row])
         
         return cell
     }
@@ -116,7 +101,7 @@ class HomeTableViewController: UITableViewController {
         
         let detail = ShowDetailsViewController()
         
-        detail.showDetailData = ShowDetailsViewController.ShowDetailData(show: items?[indexPath.row])
+        detail.showDetailData = ShowDetailsViewController.ShowDetailData(show: items?[indexPath.row].show)
         
         self.navigationController?.pushViewController(detail, animated: true)
         
@@ -125,31 +110,22 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
-
+    
 }
 
-extension HomeTableViewController:UISearchBarDelegate {
+
+extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        print(text)
+    }
     
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        filterByText(item: searchBar.text ?? "")
-//    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.getData(search: searchBar.text)
+    }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        items = itemsCopy
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
-        if searchText.count != 0 {
-            filterByText(item: searchBar.text ?? "")
-        } else {
-            items = itemsCopy
-        }
-    }
-    
-    func filterByText(item:String) {
-        
-        items = items?.filter{
-            $0.name!.contains(item)
-        } ?? []
+        self.items = [ShowResult]()
     }
 }
