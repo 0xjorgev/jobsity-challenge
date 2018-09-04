@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import moa
+import RealmSwift
+import Realm
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,26 +18,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
-//        Services.shared.retriveShowList(page: 1){
-//            (show, error) in
-//            _ = show.map{ debugPrint($0) }
-//        }
+        Moa.errorImage = UIImage(named: "empty-image")
         
-//        Services.shared.searchShowByName(query: "girls"){
-//            (show, error) in
-//            _ = show.map{ debugPrint($0) }
-//        }
+        //print(Realm.Configuration.defaultConfiguration.path!)
         
+//        var model = ShowDTO()
+//
+//        model.showId = 252
+//
+//
+//
+//        DBManager.shared.addData(object: model)
         
-//        Services.shared.peopleSearch(query: "lauren"){
-//            (show, error) in
-//            _ = show.map{ debugPrint($0) }
-//        }
-        
-        
-        
+        print(Realm.Configuration.defaultConfiguration.fileURL)
         
         return true
     }

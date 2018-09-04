@@ -22,7 +22,7 @@ class Services:NSObject {
     func retriveShowList(page:Int?, completion: @escaping ([Show]?, Error?) -> Void ){
         
         // set up URLRequest with URL
-        let endpoint = "\(BASEURL)shows?page=\(page ?? 1)"
+        let endpoint = "\(BASEURL)shows?page=\(page ?? 0)"
         
         let url = URLRequest(url: URL(string: endpoint)!)
         
@@ -57,8 +57,9 @@ class Services:NSObject {
     
     func searchShowByName(query:String?, completion: @escaping ([ShowResult]?, Error?) -> Void ){
         
-        // set up URLRequest with URL
-        let endpoint = "\(BASEURL)search/shows?q=\(query ?? "")"
+        let escapedString = query?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        
+        let endpoint = "\(BASEURL)search/shows?q=\(escapedString ?? "")"
         
         let url = URLRequest(url: URL(string: endpoint)!)
         
@@ -91,10 +92,10 @@ class Services:NSObject {
         
     }
     
-    func episodeListByShow(id:Int?, completion: @escaping ([ShowResult]?, Error?) -> Void ){
+    func episodeListBySeason(seasonId:Int?, completion: @escaping ([Episode]?, Error?) -> Void ){
         
         // set up URLRequest with URL
-        let endpoint = "\(BASEURL)seasons/\(id ?? 0)/episodes"
+        let endpoint = "\(BASEURL)seasons/\(seasonId ?? 0)/episodes"
         
         let url = URLRequest(url: URL(string: endpoint)!)
         
@@ -113,8 +114,54 @@ class Services:NSObject {
             
             let decoder = JSONDecoder()
             do {
-                let show = try decoder.decode([ShowResult].self, from: responseData)
-                completion(show, nil)
+                let list = try decoder.decode([Episode].self, from: responseData)
+                
+                
+                //call child service to parse episodes for this array
+                
+                
+                
+                completion(list, nil)
+            } catch {
+                print("error trying to convert data to JSON")
+                print(error)
+                completion(nil, error)
+            }
+            
+        })
+        
+        task.resume()
+        
+    }
+    
+    
+    func seasonsByShow(showId:Int?, completion: @escaping ([Season]?, Error?) -> Void ){
+        
+        // set up URLRequest with URL
+        let endpoint = "\(BASEURL)shows/\(showId ?? 0)/seasons"
+        
+        let url = URLRequest(url: URL(string: endpoint)!)
+        
+        let task = session.dataTask(with: url, completionHandler: {
+            (data, response, error) in
+            
+            guard let responseData = data else {
+                completion(nil, error)
+                return
+            }
+            
+            guard error == nil else {
+                completion(nil, error)
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let list = try decoder.decode([Season].self, from: responseData)
+                
+                completion(list, nil)
+                
+                
             } catch {
                 print("error trying to convert data to JSON")
                 print(error)
@@ -160,7 +207,41 @@ class Services:NSObject {
         })
         
         task.resume()
+    }
+    
+    
+    func retrieveShowBy(showId:Int?, completion: @escaping (Show?, Error?) -> Void ){
         
+        let endpoint = "\(BASEURL)shows/\(showId ?? 0)"
+        
+        let url = URLRequest(url: URL(string: endpoint)!)
+        
+        let task = session.dataTask(with: url, completionHandler: {
+            (data, response, error) in
+            
+            guard let responseData = data else {
+                completion(nil, error)
+                return
+            }
+            
+            guard error == nil else {
+                completion(nil, error)
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let result = try decoder.decode(Show.self, from: responseData)
+                completion(result, nil)
+            } catch {
+                print("error trying to convert data to JSON")
+                print(error)
+                completion(nil, error)
+            }
+            
+        })
+        
+        task.resume()
     }
     
     

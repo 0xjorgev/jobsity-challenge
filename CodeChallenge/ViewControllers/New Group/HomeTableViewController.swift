@@ -8,83 +8,103 @@
 
 import UIKit
 
-class HomeTableViewController: UITableViewController {
+class HomeTableViewController: GenericTableViewController<Show>, UISearchBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        self.searchController?.searchBar.delegate = self
+        
+        //typealias FetchResult = Result<HackerNewsResponse, FetchError>
+        
+        // Set custom indicator
+        //tableView.infiniteScrollIndicatorView = CustomInfiniteIndicator(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        
+        // Set custom indicator margin
+        tableView.infiniteScrollIndicatorMargin = 40
+        
+        // Set custom trigger offset
+        tableView.infiniteScrollTriggerOffset = 500
+        
+        // Add infinite scroll handler
+        tableView.addInfiniteScroll { [weak self] (tableView) -> Void in
+            self?.fetchData { show, error in
+                
+                tableView.finishInfiniteScroll()
+            }
+        }
+        
+        tableView.beginInfiniteScroll(true)
+        
     }
+    
+    func fetchData(handler: @escaping ((Show, Error) -> Void)) {
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        Services.shared.retriveShowList(page: currentPage){
+            (show, error) in
+            
+            //self.currentPage = Int((self.items?.count ?? 0) / 250) + 1
+            
+            // create new index paths
+            let (start, end) = (self.items!.count, show!.count + self.items!.count)
+            let indexPaths = (start..<end).map { return IndexPath(row: $0, section: 0) }
+            
+            // update data source
+            self.items! += show!
+            self.itemsCopy = self.items
+            self.currentPage += 1
+            
+            //Approachs are willDisplayCell
+            
+            // update table view
+            OperationQueue.main.addOperation {
+                self.tableView.beginUpdates()
+                self.tableView.insertRows(at: indexPaths, with: .automatic)
+                self.tableView.endUpdates()
+            }   
+        }
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+    
+    override func getData() {
+        
+        Services.shared.retriveShowList(page: currentPage){
+            (show, error) in
+            
+            self.items = show
+            
+            self.itemsCopy = show
+            
+            self.currentPage = Int((self.items?.count ?? 0) / 250) + 1
+        }
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        customLargeTitle(title:NSLocalizedString("Home", comment: ""))
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        items = itemsCopy
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        if searchText.count != 0 {
+            filterByText(item: searchBar.text ?? "")
+        } else {
+            items = itemsCopy
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    func filterByText(item:String) {
+        
+        items = items?.filter{
+            $0.name!.contains(item)
+            } ?? []
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+

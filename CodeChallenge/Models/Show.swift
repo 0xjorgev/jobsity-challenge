@@ -13,6 +13,7 @@ struct Show:Decodable {
     let id:Int?
     let url:String?
     let type:String?
+    let name:String?
     let language:String?
     let genres:[String]?
     let status:String?
@@ -34,6 +35,7 @@ struct Show:Decodable {
         case id
         case url
         case type
+        case name
         case language
         case genres
         case status
@@ -111,9 +113,88 @@ struct ShowResult:Decodable {
     let score:Double?
 }
 
-struct Episode {}
+struct Episode:Decodable {
+    
+    let id:Int?
+    let url:String?
+    let number:Int?
+    let season:Int?
+    let name:String?
+    let airdate:String?
+    let airtime:String?
+    let airstamp:String?
+    let runtime:Int?
+    let image:Media?
+    let summary:String?
+    let link:Links
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case url
+        case number
+        case season
+        case name
+        case airdate
+        case airtime
+        case airstamp
+        case runtime
+        case image
+        case summary
+        case link = "_links"
+    }
+}
 
-struct Season {}
+struct Season:Decodable {
+    
+    let id:Int?
+    let url:String?
+    let number:Int?
+    let name:String?
+    let episodeOrder:Int?
+    let premierDate:String?
+    let endDate:String?
+    let netWork:Network?
+    let webChannel:WebChannel?
+    let image:Media?
+    let summary:String?
+    let link:Links
+    var episodes:[Episode]?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case url
+        case number
+        case name
+        case episodeOrder
+        case premierDate
+        case endDate
+        case netWork
+        case webChannel
+        case image
+        case summary
+        case episodes
+        case link = "_links"
+        
+    }
+}
+
+extension Season {
+    init(season:Season, episodes:[Episode]){
+        self.id = season.id
+        self.url = season.url
+        self.number = season.number
+        self.name = season.name
+        self.episodeOrder = season.episodeOrder
+        self.premierDate = season.premierDate
+        self.endDate = season.endDate
+        self.netWork = season.netWork
+        self.webChannel = season.webChannel
+        self.image = season.image
+        self.summary = season.summary
+        self.link = season.link
+        self.episodes = episodes
+    }
+}
 
 struct Person:Decodable {
     

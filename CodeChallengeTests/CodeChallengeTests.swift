@@ -25,14 +25,14 @@ class CodeChallengeTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
-        Services.shared.retriveShowList(page: 1){
-            (show, error) in
-
-            let first = show?.first
-            XCTAssertEqual(first?.id ?? 0, 123)
-            //XCTAssertTrue(1 != 1)
-
-        }
+//        Services.shared.retriveShowList(page: 1){
+//            (show, error) in
+//
+//            let first = show?.first
+//            XCTAssertEqual(first?.id ?? 0, 123)
+//            //XCTAssertTrue(1 != 1)
+//
+//        }
     }
     
     func testPerformanceExample() {
