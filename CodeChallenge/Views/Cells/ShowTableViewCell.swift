@@ -8,6 +8,7 @@
 
 import UIKit
 import PureLayout
+import moa
 
 class ShowTableViewCell: UITableViewCell {
     
@@ -28,6 +29,7 @@ class ShowTableViewCell: UITableViewCell {
     
     var showCellData: ShowCellData? {
         didSet{
+            
             title?.text = showCellData?.show?.name ?? ""
             
             language?.text = showCellData?.show?.language ?? ""
@@ -35,6 +37,15 @@ class ShowTableViewCell: UITableViewCell {
             status?.text = showCellData?.show?.status ?? ""
             
             type?.text = showCellData?.show?.type ?? ""
+            
+            poster?.image = UIImage(named: "empty-image")
+            
+            poster?.moa.onSuccess = { image in
+                return image
+            }
+            
+            poster?.moa.url = showCellData?.show?.image?.medium
+            
         }
     }
     
@@ -72,7 +83,7 @@ class ShowTableViewCell: UITableViewCell {
         
         title = UILabel()
         
-        title?.font = UIFont.systemFont(ofSize: 16.0)
+        title?.font = UIFont.boldSystemFont(ofSize: 16.0)
         
         title?.textColor = .black
         
@@ -106,17 +117,24 @@ class ShowTableViewCell: UITableViewCell {
         self.addSubview(type!)
         
         
+        self.accessoryType = .disclosureIndicator
+        
+        
         setupConstraints()
         
     }
     
     func setupConstraints(){
         
+        let imageHeight:CGFloat = CGFloat(108.0)
+        let scaleFactor:CGFloat = CGFloat(0.7118)
+        
         poster?.autoPinEdge(.top, to: .top, of: self, withOffset: 5.0)
         poster?.autoPinEdge(.left, to: .left, of: self, withOffset: 5.0)
         //poster?.autoPinEdge(.right, to: .right, of: self, withOffset: 5.0)
-        poster?.autoSetDimension(.height, toSize: 60.0)
-        poster?.autoPinEdge(.bottom, to: .bottom, of: self, withOffset: -5.0)
+        poster?.autoSetDimension(.height, toSize: imageHeight)
+        poster?.autoSetDimension(.width, toSize: (imageHeight * scaleFactor))
+        //poster?.autoPinEdge(.bottom, to: .bottom, of: self, withOffset: -5.0)
         
         title?.autoPinEdge(.top, to: .top, of: self, withOffset: 5.0)
         title?.autoPinEdge(.left, to: .left, of: self, withOffset: 85.0)

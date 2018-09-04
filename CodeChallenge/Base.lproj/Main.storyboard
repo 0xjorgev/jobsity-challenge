@@ -124,4 +124,5 @@
         <image name="search" width="30" height="30"/>
         <image name="settings" width="30" height="30"/>
     </resources>
+    <color key="tintColor" red="0.0" green="0.59999999999999998" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
 </document>

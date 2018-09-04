@@ -9,6 +9,7 @@ target 'CodeChallenge' do
 
   pod 'PureLayout'
   pod 'moa', '~> 9.0'
+  pod 'UIScrollView-InfiniteScroll', '~> 1.1.0'
 
   target 'CodeChallengeTests' do
     inherit! :search_paths
