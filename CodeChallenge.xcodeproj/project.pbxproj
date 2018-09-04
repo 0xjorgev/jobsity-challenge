@@ -35,6 +35,12 @@
 		18572C6B213E06B900FA10E1 /* EpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572C69213E06B900FA10E1 /* EpisodeDetailViewController.swift */; };
 		18572C6D213E09D100FA10E1 /* EpisodeDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572C6C213E09D100FA10E1 /* EpisodeDetailHeader.swift */; };
 		18572C6E213E09D100FA10E1 /* EpisodeDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572C6C213E09D100FA10E1 /* EpisodeDetailHeader.swift */; };
+		18883DD8213E4A2E008113F6 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18883DD7213E4A2E008113F6 /* DBManager.swift */; };
+		18883DDA213E4BA6008113F6 /* ShowDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18883DD9213E4BA6008113F6 /* ShowDTO.swift */; };
+		18883DDD213E4ED5008113F6 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18883DDC213E4ED5008113F6 /* FavoritesTableViewController.swift */; };
+		18883DDE213E4ED5008113F6 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18883DDC213E4ED5008113F6 /* FavoritesTableViewController.swift */; };
+		18883DDF213EA378008113F6 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18883DD7213E4A2E008113F6 /* DBManager.swift */; };
+		18883DE0213EA9C9008113F6 /* ShowDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18883DD9213E4BA6008113F6 /* ShowDTO.swift */; };
 		189B3D91213A1D7100984D6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189B3D90213A1D7100984D6E /* AppDelegate.swift */; };
 		189B3D93213A1D7100984D6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189B3D92213A1D7100984D6E /* ViewController.swift */; };
 		189B3D96213A1D7100984D6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189B3D94213A1D7100984D6E /* Main.storyboard */; };
@@ -85,6 +91,10 @@
 		18572C65213D09C500FA10E1 /* ShowEpisodeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEpisodeHeader.swift; sourceTree = "<group>"; };
 		18572C69213E06B900FA10E1 /* EpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewController.swift; sourceTree = "<group>"; };
 		18572C6C213E09D100FA10E1 /* EpisodeDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailHeader.swift; sourceTree = "<group>"; };
+		18883DD6213E494F008113F6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		18883DD7213E4A2E008113F6 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		18883DD9213E4BA6008113F6 /* ShowDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDTO.swift; sourceTree = "<group>"; };
+		18883DDC213E4ED5008113F6 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		189B3D8D213A1D7100984D6E /* CodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		189B3D90213A1D7100984D6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		189B3D92213A1D7100984D6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -188,9 +198,18 @@
 			path = "Episode Details";
 			sourceTree = "<group>";
 		};
+		18883DDB213E4EB9008113F6 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				18883DDC213E4ED5008113F6 /* FavoritesTableViewController.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
 		189B3D84213A1D7100984D6E = {
 			isa = PBXGroup;
 			children = (
+				18883DD6213E494F008113F6 /* README.md */,
 				189B3D8F213A1D7100984D6E /* CodeChallenge */,
 				189B3DA4213A1D7C00984D6E /* CodeChallengeTests */,
 				189B3DAF213A1D7C00984D6E /* CodeChallengeUITests */,
@@ -250,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				18B52976213A31C600DC8016 /* Show.swift */,
+				18883DD9213E4BA6008113F6 /* ShowDTO.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -260,6 +280,7 @@
 				189B3D90213A1D7100984D6E /* AppDelegate.swift */,
 				18B52973213A2C8400DC8016 /* Services.swift */,
 				18B52982213AE65500DC8016 /* Colors.swift */,
+				18883DD7213E4A2E008113F6 /* DBManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -267,6 +288,7 @@
 		18B52979213A415E00DC8016 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				18883DDB213E4EB9008113F6 /* Favorites */,
 				18BA22CB213E2948009C6C65 /* Search */,
 				18572C68213E068F00FA10E1 /* Episode Details */,
 				18572C49213C2E7400FA10E1 /* Show Details */,
@@ -518,12 +540,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CodeChallenge/Pods-CodeChallenge-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/UIScrollView-InfiniteScroll/UIScrollView_InfiniteScroll.framework",
 				"${BUILT_PRODUCTS_DIR}/moa/moa.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIScrollView_InfiniteScroll.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/moa.framework",
 			);
@@ -563,6 +589,7 @@
 				189B3D93213A1D7100984D6E /* ViewController.swift in Sources */,
 				18B52974213A2C8400DC8016 /* Services.swift in Sources */,
 				18B52986213AE83500DC8016 /* ShowListViewModel.swift in Sources */,
+				18883DDD213E4ED5008113F6 /* FavoritesTableViewController.swift in Sources */,
 				18572C63213D02D400FA10E1 /* ShowEpisodeTableViewCell.swift in Sources */,
 				18B52983213AE65500DC8016 /* Colors.swift in Sources */,
 				18572C59213CD6BC00FA10E1 /* String+Extension.swift in Sources */,
@@ -570,10 +597,12 @@
 				18BA22CD213E295D009C6C65 /* SearchViewController.swift in Sources */,
 				18572C5D213CE53B00FA10E1 /* GenresEnum.swift in Sources */,
 				18572C66213D09C500FA10E1 /* ShowEpisodeHeader.swift in Sources */,
+				18883DD8213E4A2E008113F6 /* DBManager.swift in Sources */,
 				18572C56213CD24F00FA10E1 /* ShowSummaryTableViewCell.swift in Sources */,
 				18572C6A213E06B900FA10E1 /* EpisodeDetailViewController.swift in Sources */,
 				189B3D91213A1D7100984D6E /* AppDelegate.swift in Sources */,
 				18572C4B213C2E9C00FA10E1 /* ShowDetailsViewController.swift in Sources */,
+				18883DDA213E4BA6008113F6 /* ShowDTO.swift in Sources */,
 				18572C6D213E09D100FA10E1 /* EpisodeDetailHeader.swift in Sources */,
 				18572C4F213C346E00FA10E1 /* UIViewController+Extension.swift in Sources */,
 				18B5297B213ADCE300DC8016 /* HomeTableViewController.swift in Sources */,
@@ -592,10 +621,12 @@
 				18B52987213B337300DC8016 /* ShowTableViewCell.swift in Sources */,
 				18572C54213CCF1F00FA10E1 /* ShowDetailHeaderView.swift in Sources */,
 				18572C67213D09C500FA10E1 /* ShowEpisodeHeader.swift in Sources */,
+				18883DE0213EA9C9008113F6 /* ShowDTO.swift in Sources */,
 				18B5297C213ADCE300DC8016 /* HomeTableViewController.swift in Sources */,
 				18572C57213CD24F00FA10E1 /* ShowSummaryTableViewCell.swift in Sources */,
 				18572C61213D001A00FA10E1 /* UILabel+Extension.swift in Sources */,
 				18572C5A213CD6BC00FA10E1 /* String+Extension.swift in Sources */,
+				18883DDE213E4ED5008113F6 /* FavoritesTableViewController.swift in Sources */,
 				18572C46213C13A300FA10E1 /* AppDelegate.swift in Sources */,
 				18572C6E213E09D100FA10E1 /* EpisodeDetailHeader.swift in Sources */,
 				18572C6B213E06B900FA10E1 /* EpisodeDetailViewController.swift in Sources */,
@@ -604,6 +635,7 @@
 				18572C5E213CE53B00FA10E1 /* GenresEnum.swift in Sources */,
 				18572C47213C13A500FA10E1 /* ViewController.swift in Sources */,
 				189B3DA6213A1D7C00984D6E /* CodeChallengeTests.swift in Sources */,
+				18883DDF213EA378008113F6 /* DBManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -53,12 +53,15 @@ class ShowDetailsViewController: UITableViewController {
         
         tableView.register(ShowEpisodeTableViewCell.self, forCellReuseIdentifier: episodeIdentifier)
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image:#imageLiteral(resourceName: "header_fav_reposo_") , style: .plain, target: self, action: #selector(addFav))
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         addImageTitle(name: "gray-text-logo-smaller")
         customSmallNavBar()
+        verifyFav(showId: self.showDetailData?.show?.id ?? 0)
         self.view.backgroundColor = .white
     }
     
@@ -87,6 +90,49 @@ class ShowDetailsViewController: UITableViewController {
                     }
                 }
             }
+        }
+    }
+    
+    
+    func addToFavorites(item:Int) {
+        
+        let dto = ShowDTO()
+        
+        dto.showId = item
+        
+        DBManager.shared.addData(object: dto)
+        
+        verifyFav(showId: item)
+    }
+    
+    func removeFromFavorites(item:Int) {
+        
+        let dto = DBManager.shared.getObjectById(id: item)
+        
+        if let obj = dto {
+            DBManager.shared.deleteFromDb(object: obj)
+        }
+        
+        verifyFav(showId: item)
+        
+    }
+    
+    @objc func addFav(sender:AnyObject?) {
+        self.addToFavorites(item: self.showDetailData?.show?.id ?? 0)
+    }
+    
+    @objc func removeFav(sender:AnyObject?) {
+        self.removeFromFavorites(item: self.showDetailData?.show?.id ?? 0)
+    }
+    
+    
+    
+    func verifyFav(showId: Int) {
+        
+        if DBManager.shared.DBContains(showId: showId) {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "heart")  , style: .plain, target: self, action: #selector(removeFav))
+        } else {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image:#imageLiteral(resourceName: "header_fav_reposo_") , style: .plain, target: self, action: #selector(addFav))
         }
     }
     
@@ -154,13 +200,26 @@ class ShowDetailsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRow(at: indexPath, animated: true)
         
-        let episodeDetail = EpisodeDetailViewController()
         
-        episodeDetail.item = items?[indexPath.section - 1].episodes?[indexPath.row]
+        switch indexPath.section {
+        case 0:
+            tableView.deselectRow(at: indexPath, animated: true)
+            break
+        default:
+            
+            tableView.deselectRow(at: indexPath, animated: true)
         
-        self.navigationController?.pushViewController(episodeDetail, animated: true)
+            let episodeDetail = EpisodeDetailViewController()
+        
+            episodeDetail.item = items?[indexPath.section - 1].episodes?[indexPath.row]
+        
+            self.navigationController?.pushViewController(episodeDetail, animated: true)
+        }
+        
+        //from 1 an on
+        
+        
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

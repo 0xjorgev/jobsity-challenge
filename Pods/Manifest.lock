@@ -1,24 +1,34 @@
 PODS:
   - moa (9.0.2)
   - PureLayout (3.0.2)
+  - Realm (3.7.4):
+    - Realm/Headers (= 3.7.4)
+  - Realm/Headers (3.7.4)
+  - RealmSwift (3.7.4):
+    - Realm (= 3.7.4)
   - UIScrollView-InfiniteScroll (1.1.0)
 
 DEPENDENCIES:
   - moa (~> 9.0)
   - PureLayout
+  - RealmSwift
   - UIScrollView-InfiniteScroll (~> 1.1.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - moa
     - PureLayout
+    - Realm
+    - RealmSwift
     - UIScrollView-InfiniteScroll
 
 SPEC CHECKSUMS:
   moa: b73dc5e0efa1fad00711c4608e41b197f4d15b12
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+  Realm: a469bb59e33f9926102ccaea4349822c53b9117e
+  RealmSwift: a45861b21c180f5cf0f122144b9759fa8dde3e9e
   UIScrollView-InfiniteScroll: 3ef456bcbe759c19f510a383cff96e6647c98c98
 
-PODFILE CHECKSUM: 39a2d6b36e78cfba88ccd7623461fb336d8be437
+PODFILE CHECKSUM: b8e0ed84049805b46a1fbe14d44a32be02301def
 
 COCOAPODS: 1.5.3

@@ -8,6 +8,8 @@
 
 import UIKit
 import moa
+import RealmSwift
+import Realm
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,27 +21,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Moa.errorImage = UIImage(named: "empty-image")
         
+        //print(Realm.Configuration.defaultConfiguration.path!)
         
-        // Override point for customization after application launch.
+//        var model = ShowDTO()
+//
+//        model.showId = 252
+//
+//
+//
+//        DBManager.shared.addData(object: model)
         
-//        Services.shared.retriveShowList(page: 1){
-//            (show, error) in
-//            _ = show.map{ debugPrint($0) }
-//        }
-        
-//        Services.shared.searchShowByName(query: "girls"){
-//            (show, error) in
-//            _ = show.map{ debugPrint($0) }
-//        }
-        
-        
-//        Services.shared.peopleSearch(query: "lauren"){
-//            (show, error) in
-//            _ = show.map{ debugPrint($0) }
-//        }
-        
-        
-        
+        print(Realm.Configuration.defaultConfiguration.fileURL)
         
         return true
     }
