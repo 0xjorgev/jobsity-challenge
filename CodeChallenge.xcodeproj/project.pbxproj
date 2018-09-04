@@ -98,8 +98,8 @@
 		18883DD9213E4BA6008113F6 /* ShowDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDTO.swift; sourceTree = "<group>"; };
 		18883DDC213E4ED5008113F6 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		18883DE2213ED099008113F6 /* GenericTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewController.swift; sourceTree = "<group>"; };
-		18883DE6213EE4EB008113F6 /* CodeChallenge-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CodeChallenge-Bridging-Header.h"; sourceTree = "<group>"; };
-		18883DE7213EE4EB008113F6 /* CodeChallengeTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CodeChallengeTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		18883DEC213F3A62008113F6 /* CodeChallengeTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CodeChallengeTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		18883DED213F3A63008113F6 /* CodeChallenge-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CodeChallenge-Bridging-Header.h"; sourceTree = "<group>"; };
 		189B3D8D213A1D7100984D6E /* CodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		189B3D90213A1D7100984D6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		189B3D92213A1D7100984D6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -229,8 +229,6 @@
 				189B3D8E213A1D7100984D6E /* Products */,
 				A9FEEE74DFABD9B2D4F1A0C7 /* Pods */,
 				6E0D78921AD4AAFCBD2DA6E2 /* Frameworks */,
-				18883DE6213EE4EB008113F6 /* CodeChallenge-Bridging-Header.h */,
-				18883DE7213EE4EB008113F6 /* CodeChallengeTests-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -258,6 +256,8 @@
 				189B3D97213A1D7B00984D6E /* Assets.xcassets */,
 				189B3D99213A1D7C00984D6E /* LaunchScreen.storyboard */,
 				189B3D9C213A1D7C00984D6E /* Info.plist */,
+				18883DED213F3A63008113F6 /* CodeChallenge-Bridging-Header.h */,
+				18883DEC213F3A62008113F6 /* CodeChallengeTests-Bridging-Header.h */,
 			);
 			path = CodeChallenge;
 			sourceTree = "<group>";
@@ -560,7 +560,6 @@
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/UIScrollView-InfiniteScroll/UIScrollView_InfiniteScroll.framework",
 				"${BUILT_PRODUCTS_DIR}/moa/moa.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -568,7 +567,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIScrollView_InfiniteScroll.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/moa.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -832,8 +830,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = JM.CodeChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "CodeChallenge-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -855,7 +853,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = JM.CodeChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "CodeChallenge-Bridging-Header.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

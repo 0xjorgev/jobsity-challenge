@@ -9,72 +9,50 @@
 import UIKit
 
 class HomeTableViewController: GenericTableViewController<Show>, UISearchBarDelegate {
+    
+    var fetchingMore = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.searchController?.searchBar.delegate = self
-        
-        //typealias FetchResult = Result<HackerNewsResponse, FetchError>
-        
-        // Set custom indicator
-        //tableView.infiniteScrollIndicatorView = CustomInfiniteIndicator(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
-        
-        // Set custom indicator margin
-        tableView.infiniteScrollIndicatorMargin = 40
-        
-        // Set custom trigger offset
-        tableView.infiniteScrollTriggerOffset = 500
-        
-        // Add infinite scroll handler
-        tableView.addInfiniteScroll { [weak self] (tableView) -> Void in
-            self?.fetchData { show, error in
-                
-                tableView.finishInfiniteScroll()
-            }
-        }
-        
-        tableView.beginInfiniteScroll(true)
-        
     }
     
-    func fetchData(handler: @escaping ((Show, Error) -> Void)) {
-
-        Services.shared.retriveShowList(page: currentPage){
-            (show, error) in
-            
-            //self.currentPage = Int((self.items?.count ?? 0) / 250) + 1
-            
-            // create new index paths
-            let (start, end) = (self.items!.count, show!.count + self.items!.count)
-            let indexPaths = (start..<end).map { return IndexPath(row: $0, section: 0) }
-            
-            // update data source
-            self.items! += show!
-            self.itemsCopy = self.items
-            self.currentPage += 1
-            
-            //Approachs are willDisplayCell
-            
-            // update table view
-            OperationQueue.main.addOperation {
-                self.tableView.beginUpdates()
-                self.tableView.insertRows(at: indexPaths, with: .automatic)
-                self.tableView.endUpdates()
-            }   
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        
+        
+        if offsetY > contentHeight - scrollView.frame.height * 4 {
+            if !fetchingMore {
+               // beginBatchFetch()
+                self.currentPage += 1
+                self.getData()
+            }
         }
     }
     
     override func getData() {
         
+        fetchingMore = true
+        
+        
         Services.shared.retriveShowList(page: currentPage){
-            (show, error) in
-            
-            self.items = show
-            
-            self.itemsCopy = show
-            
-            self.currentPage = Int((self.items?.count ?? 0) / 250) + 1
+            (shows, error) in
+            if error == nil {
+                
+                self.items! += shows!
+                
+                self.itemsCopy = self.items
+                
+                self.currentPage = Int((self.items?.count ?? 0) / 250)
+                
+                DispatchQueue.main.async{
+                    self.tableView.reloadSections(IndexSet(integer: 0), with: .none)
+                    self.fetchingMore = false
+                    self.tableView.reloadData()
+                }
+            }
         }
     }
     

@@ -18,6 +18,8 @@ class SearchViewController:GenericTableViewController<ShowResult>,  UISearchBarD
         
         searchController?.searchBar.delegate = self
         
+        searchController?.searchBar.scopeButtonTitles = ["Shows", "People"]
+        
         //refreshControl?.removeTarget(self, action: #selector(refresData), for: .valueChanged)
     }
     

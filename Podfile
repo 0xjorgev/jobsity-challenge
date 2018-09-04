@@ -9,7 +9,6 @@ target 'CodeChallenge' do
 
   pod 'PureLayout'
   pod 'moa', '~> 9.0'
-  pod 'UIScrollView-InfiniteScroll', '~> 1.1.0'
   pod 'RealmSwift'
 
   target 'CodeChallengeTests' do
