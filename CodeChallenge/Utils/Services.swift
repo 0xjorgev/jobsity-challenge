@@ -176,8 +176,9 @@ class Services:NSObject {
     
     func peopleSearch(query:String?, completion: @escaping ([PersonResult]?, Error?) -> Void ){
         
-        // set up URLRequest with URL
-        let endpoint = "\(BASEURL)search/people?q=\(query ?? "")"
+        let escapedString = query?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        
+        let endpoint = "\(BASEURL)search/people?q=\(escapedString ?? "")"
         
         let url = URLRequest(url: URL(string: endpoint)!)
         
@@ -233,6 +234,41 @@ class Services:NSObject {
             do {
                 let result = try decoder.decode(Show.self, from: responseData)
                 completion(result, nil)
+            } catch {
+                print("error trying to convert data to JSON")
+                print(error)
+                completion(nil, error)
+            }
+            
+        })
+        
+        task.resume()
+    }
+    
+    
+    func retrieveShowBy(peopleId:Int?, completion: @escaping ([EmbeddedShow]?, Error?) -> Void ){
+        
+        let endpoint = "\(BASEURL)people/\(peopleId ?? 0)/castcredits?embed=show"
+        
+        let url = URLRequest(url: URL(string: endpoint)!)
+        
+        let task = session.dataTask(with: url, completionHandler: {
+            (data, response, error) in
+            
+            guard let responseData = data else {
+                completion(nil, error)
+                return
+            }
+            
+            guard error == nil else {
+                completion(nil, error)
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let list = try decoder.decode([EmbeddedShow].self, from: responseData)
+                completion(list, nil)
             } catch {
                 print("error trying to convert data to JSON")
                 print(error)

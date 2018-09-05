@@ -229,4 +229,23 @@ struct PersonResult:Decodable {
     let score:Double?
 }
 
+struct Embeded:Decodable {
+    let show:Show?
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case show
+    }
+}
+
+struct EmbeddedShow:Decodable {
+    let embeded:Embeded?
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case embeded = "_embedded"
+        
+    }
+}
+
 

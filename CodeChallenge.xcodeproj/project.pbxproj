@@ -43,6 +43,12 @@
 		18883DE0213EA9C9008113F6 /* ShowDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18883DD9213E4BA6008113F6 /* ShowDTO.swift */; };
 		18883DE3213ED099008113F6 /* GenericTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18883DE2213ED099008113F6 /* GenericTableViewController.swift */; };
 		18883DE4213ED099008113F6 /* GenericTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18883DE2213ED099008113F6 /* GenericTableViewController.swift */; };
+		18883DEF213F4879008113F6 /* PeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18883DEE213F4879008113F6 /* PeopleTableViewCell.swift */; };
+		18883DF0213F4879008113F6 /* PeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18883DEE213F4879008113F6 /* PeopleTableViewCell.swift */; };
+		18883DF3213F4FBD008113F6 /* PersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18883DF2213F4FBD008113F6 /* PersonDetailsViewController.swift */; };
+		18883DF4213F4FBD008113F6 /* PersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18883DF2213F4FBD008113F6 /* PersonDetailsViewController.swift */; };
+		18883DF6213F50FF008113F6 /* PeopleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18883DF5213F50FF008113F6 /* PeopleHeaderView.swift */; };
+		18883DF7213F50FF008113F6 /* PeopleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18883DF5213F50FF008113F6 /* PeopleHeaderView.swift */; };
 		189B3D91213A1D7100984D6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189B3D90213A1D7100984D6E /* AppDelegate.swift */; };
 		189B3D93213A1D7100984D6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189B3D92213A1D7100984D6E /* ViewController.swift */; };
 		189B3D96213A1D7100984D6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189B3D94213A1D7100984D6E /* Main.storyboard */; };
@@ -98,8 +104,9 @@
 		18883DD9213E4BA6008113F6 /* ShowDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDTO.swift; sourceTree = "<group>"; };
 		18883DDC213E4ED5008113F6 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		18883DE2213ED099008113F6 /* GenericTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewController.swift; sourceTree = "<group>"; };
-		18883DEC213F3A62008113F6 /* CodeChallengeTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CodeChallengeTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		18883DED213F3A63008113F6 /* CodeChallenge-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CodeChallenge-Bridging-Header.h"; sourceTree = "<group>"; };
+		18883DEE213F4879008113F6 /* PeopleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewCell.swift; sourceTree = "<group>"; };
+		18883DF2213F4FBD008113F6 /* PersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewController.swift; sourceTree = "<group>"; };
+		18883DF5213F50FF008113F6 /* PeopleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleHeaderView.swift; sourceTree = "<group>"; };
 		189B3D8D213A1D7100984D6E /* CodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		189B3D90213A1D7100984D6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		189B3D92213A1D7100984D6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +190,7 @@
 				18572C52213CCF1F00FA10E1 /* ShowDetailHeaderView.swift */,
 				18572C65213D09C500FA10E1 /* ShowEpisodeHeader.swift */,
 				18572C6C213E09D100FA10E1 /* EpisodeDetailHeader.swift */,
+				18883DF5213F50FF008113F6 /* PeopleHeaderView.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -217,6 +225,14 @@
 				18883DE2213ED099008113F6 /* GenericTableViewController.swift */,
 			);
 			path = Generic;
+			sourceTree = "<group>";
+		};
+		18883DF1213F4F4C008113F6 /* Person Details */ = {
+			isa = PBXGroup;
+			children = (
+				18883DF2213F4FBD008113F6 /* PersonDetailsViewController.swift */,
+			);
+			path = "Person Details";
 			sourceTree = "<group>";
 		};
 		189B3D84213A1D7100984D6E = {
@@ -256,8 +272,6 @@
 				189B3D97213A1D7B00984D6E /* Assets.xcassets */,
 				189B3D99213A1D7C00984D6E /* LaunchScreen.storyboard */,
 				189B3D9C213A1D7C00984D6E /* Info.plist */,
-				18883DED213F3A63008113F6 /* CodeChallenge-Bridging-Header.h */,
-				18883DEC213F3A62008113F6 /* CodeChallengeTests-Bridging-Header.h */,
 			);
 			path = CodeChallenge;
 			sourceTree = "<group>";
@@ -303,6 +317,7 @@
 		18B52979213A415E00DC8016 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				18883DF1213F4F4C008113F6 /* Person Details */,
 				18883DE1213ED082008113F6 /* Generic */,
 				18883DDB213E4EB9008113F6 /* Favorites */,
 				18BA22CB213E2948009C6C65 /* Search */,
@@ -336,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				18B52980213AE60900DC8016 /* ShowTableViewCell.swift */,
+				18883DEE213F4879008113F6 /* PeopleTableViewCell.swift */,
 				18572C55213CD24F00FA10E1 /* ShowSummaryTableViewCell.swift */,
 				18572C62213D02D400FA10E1 /* ShowEpisodeTableViewCell.swift */,
 			);
@@ -605,6 +621,7 @@
 				189B3D93213A1D7100984D6E /* ViewController.swift in Sources */,
 				18B52974213A2C8400DC8016 /* Services.swift in Sources */,
 				18B52986213AE83500DC8016 /* ShowListViewModel.swift in Sources */,
+				18883DF3213F4FBD008113F6 /* PersonDetailsViewController.swift in Sources */,
 				18883DDD213E4ED5008113F6 /* FavoritesTableViewController.swift in Sources */,
 				18572C63213D02D400FA10E1 /* ShowEpisodeTableViewCell.swift in Sources */,
 				18B52983213AE65500DC8016 /* Colors.swift in Sources */,
@@ -616,9 +633,11 @@
 				18883DD8213E4A2E008113F6 /* DBManager.swift in Sources */,
 				18572C56213CD24F00FA10E1 /* ShowSummaryTableViewCell.swift in Sources */,
 				18572C6A213E06B900FA10E1 /* EpisodeDetailViewController.swift in Sources */,
+				18883DF6213F50FF008113F6 /* PeopleHeaderView.swift in Sources */,
 				189B3D91213A1D7100984D6E /* AppDelegate.swift in Sources */,
 				18572C4B213C2E9C00FA10E1 /* ShowDetailsViewController.swift in Sources */,
 				18883DDA213E4BA6008113F6 /* ShowDTO.swift in Sources */,
+				18883DEF213F4879008113F6 /* PeopleTableViewCell.swift in Sources */,
 				18572C6D213E09D100FA10E1 /* EpisodeDetailHeader.swift in Sources */,
 				18572C4F213C346E00FA10E1 /* UIViewController+Extension.swift in Sources */,
 				18883DE3213ED099008113F6 /* GenericTableViewController.swift in Sources */,
@@ -636,6 +655,7 @@
 				18572C44213C139C00FA10E1 /* Services.swift in Sources */,
 				18572C45213C13A000FA10E1 /* Colors.swift in Sources */,
 				18B52987213B337300DC8016 /* ShowTableViewCell.swift in Sources */,
+				18883DF4213F4FBD008113F6 /* PersonDetailsViewController.swift in Sources */,
 				18572C54213CCF1F00FA10E1 /* ShowDetailHeaderView.swift in Sources */,
 				18572C67213D09C500FA10E1 /* ShowEpisodeHeader.swift in Sources */,
 				18883DE0213EA9C9008113F6 /* ShowDTO.swift in Sources */,
@@ -647,9 +667,11 @@
 				18572C46213C13A300FA10E1 /* AppDelegate.swift in Sources */,
 				18572C6E213E09D100FA10E1 /* EpisodeDetailHeader.swift in Sources */,
 				18572C6B213E06B900FA10E1 /* EpisodeDetailViewController.swift in Sources */,
+				18883DF7213F50FF008113F6 /* PeopleHeaderView.swift in Sources */,
 				18572C4C213C2E9C00FA10E1 /* ShowDetailsViewController.swift in Sources */,
 				18B52988213B34A000DC8016 /* Show.swift in Sources */,
 				18572C5E213CE53B00FA10E1 /* GenresEnum.swift in Sources */,
+				18883DF0213F4879008113F6 /* PeopleTableViewCell.swift in Sources */,
 				18572C47213C13A500FA10E1 /* ViewController.swift in Sources */,
 				189B3DA6213A1D7C00984D6E /* CodeChallengeTests.swift in Sources */,
 				18883DE4213ED099008113F6 /* GenericTableViewController.swift in Sources */,

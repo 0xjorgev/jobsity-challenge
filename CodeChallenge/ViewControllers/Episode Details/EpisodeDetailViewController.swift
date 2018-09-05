@@ -12,8 +12,6 @@ class EpisodeDetailViewController: UITableViewController {
 
     let summaryIdentifier = "ShowSummaryTableViewCell"
     
-    //let episodeIdentifier = "EpisodeDetailHeader"
-    
     var header:EpisodeDetailHeader?
     
     var item:Episode?{
@@ -34,20 +32,6 @@ class EpisodeDetailViewController: UITableViewController {
         }
     }
     
-//    struct ShowDetailData {
-//        let show:Show?
-//    }
-//
-//    var showDetailData:ShowDetailData? {
-//        didSet{
-//            //print("Show ID: \(showDetailData?.show?.id ?? 0)")
-//
-//           // self.getData(showId: showDetailData?.show?.id ?? 0)
-//
-//
-//        }
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,34 +47,6 @@ class EpisodeDetailViewController: UITableViewController {
         customSmallNavBar()
         self.view.backgroundColor = .white
     }
-    
-//    func getData(showId:Int?){
-//        Services.shared.seasonsByShow(showId: showId!){
-//            seasons, error in
-//
-//            if error == nil {
-//                //                print("Shows: \(seasons?.count ?? 0)")
-//
-//                self.items = [Season]()
-//
-//                for season in seasons! {
-//                    Services.shared.episodeListBySeason(seasonId: season.id){
-//                        episodes, error in
-//
-//                        //                        print("Episodes Count: \(episodes?.count ?? 0)")
-//
-//                        if error == nil {
-//
-//                            let filled = Season(season:season, episodes:episodes!)
-//                            //print("Filled: \(filled)")
-//                            self.items?.append(filled)
-//                            self.items = self.items?.sorted(by: { $0.number! < $1.number! })
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
     
     // MARK: - Table view data source
     

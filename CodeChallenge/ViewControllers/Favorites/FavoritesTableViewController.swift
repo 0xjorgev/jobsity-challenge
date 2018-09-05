@@ -35,7 +35,7 @@ class FavoritesTableViewController: GenericTableViewController<Show> {
     
     override func getData(){
         
-        items = [Show]()
+        items = []
         
         let list = DBManager.shared.getDataFromDB()
         
