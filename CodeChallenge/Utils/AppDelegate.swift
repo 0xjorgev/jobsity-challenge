@@ -10,6 +10,7 @@ import UIKit
 import moa
 import RealmSwift
 import Realm
+import LocalAuthentication
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Moa.errorImage = UIImage(named: "empty-image")
         
+        var context = LAContext()
+        
         //print(Realm.Configuration.defaultConfiguration.path!)
         
 //        var model = ShowDTO()
@@ -31,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //
 //        DBManager.shared.addData(object: model)
         
-        print(Realm.Configuration.defaultConfiguration.fileURL)
+//        print(Realm.Configuration.defaultConfiguration.fileURL)
         
         return true
     }

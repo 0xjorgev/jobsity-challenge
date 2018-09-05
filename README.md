@@ -7,6 +7,7 @@
 - TV Shows season listing
 - TV Shows episodes by season
 - TV People search
+- TV Show by people
 
 ### Project minimum requirements:
 
@@ -30,7 +31,6 @@ Installed Pods:
 
 - PureLayout, library to manage AutoLayout via code in a simpler and easier to maintain way
 - moa, async image downloader manager for UIImageViews
-- UIScrollView-InfiniteScroll, allows to create the infinite scroll to the Home Section
 - RealmSwift, an object oriented local database (for Favorites functionality)
 
 ### Project Structure:
